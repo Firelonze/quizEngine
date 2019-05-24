@@ -10,41 +10,18 @@ namespace quizEngine
     {
         private static int score = 0;
         static void Main(string[] args)
-        {
-            //create questions and answers
-            
-            List<Question> questions = new List<Question>{
-            
-                new Question("Hoe lang is een chinees?",
-                100,
-                new List<Answer>{
-                    new Answer("Dat is leuk"),
-                    new Answer("2 meter"), 
-                    new Answer("heel lang")
-                    },
-                0),
-              
+        {    
+            //create questions and answers            
+            List<Question> questions = CreateQuestions();
 
-               
-
-                new Question("Wie is Edgar Bosscher?",
-                50,
-                new List<Answer>{
-                    new Answer("Burgermester van Amsterdam"),
-                    new Answer("Directeur van het MA"), 
-                    new Answer("Stagebegeleider van Game Artist"), 
-                    new Answer("Een superspion")},
-                2)
-            };
-            
-/*
+           
+            Console.ForegroundColor = ConsoleColor.White;
             
             //loop through questions
             int i = 0;
             foreach(Question q in questions){
                 Console.Clear();
                 Console.WriteLine("Score : "+score);
-
                 i++;
                 Console.WriteLine("question "+i+": "+ q.GetString());
                 int j = 0;
@@ -53,10 +30,11 @@ namespace quizEngine
                     Console.WriteLine("Type  "+ j + " for : "+a.GetString());   
                 }
                 
-
+                //Await player input
+                //input still needs validation
                 int input  = Convert.ToInt32(Console.ReadLine());
-                int result = q.AnswerIt(input-1);//-1 ivm arrayIndex start bij 0
-                if(result > -1){
+                int result = q.AnswerIt(input-1);//returns -1 if wrong
+                if(result > -1){//RIGHT
                     score += result;
                     Console.Clear();
                     Console.BackgroundColor = ConsoleColor.DarkGreen;                    
@@ -66,7 +44,7 @@ namespace quizEngine
                     Thread.Sleep(1000);
                     Console.Clear();
                     Console.BackgroundColor = ConsoleColor.Black;    
-                }else{
+                }else{//WRONG
                     Console.Clear();
                     Console.BackgroundColor = ConsoleColor.Red;                    
                     Console.WriteLine("WRONG!");
@@ -76,86 +54,69 @@ namespace quizEngine
                     Console.BackgroundColor = ConsoleColor.Black;                       
                 }                
             }
+            //After questions are answered player enters highscore
             Console.Clear();
             Console.WriteLine("Game Over your score is : "+ score + " points");       
-
-*/
-/*
             Console.WriteLine("Please enter your name:");
             string playerName = Console.ReadLine();
-            WriteHighScore(playerName,score);        
-*/
+            HighScore.WriteHighScore(playerName,score,"highScore.txt");        
 
-//print highscore 
 
-            string[] highScore = GetSortedHighScore("highScore.txt");   
-            foreach(string s in highScore){
-                Console.WriteLine(s);
+            //print highscore after highscore is saved
+            string[] highScore = ListSorter.GetSortedHighScore("highScore.txt");
+            
+            Console.Clear();
+            Console.BackgroundColor = ConsoleColor.DarkYellow;
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.WriteLine("+++++++++++++ Highscore +++++++++++++");
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.White;
+            int count = highScore.Length;
+            if(count>10)count =10;
+            for(int k=0;k<count;k++){
+                Console.WriteLine(highScore[k]);
             }   
         }
-        static async void WriteHighScore(string playerName, int s){
-            using (StreamWriter sw = new StreamWriter("highScore.txt",true)){
-                await sw.WriteLineAsync(playerName + ":" + s);
-            }  
+       
+        static List<Question> CreateQuestions(){
+             return new List<Question>{
+            
+                new Question("Hoe lang was Michael Jackson?",
+                50,
+                new List<Answer>{
+                    new Answer("1 meter 75"),
+                    new Answer("2 meter"), 
+                    new Answer("1 meter 65")
+                    },
+                0),
+                new Question("Waardoor stierf Bob Marley?",
+                50,
+                new List<Answer>{
+                    new Answer("De sherrif schoot hem neer"),
+                    new Answer("Hij had een overdisis drugs gebruikt"), 
+                    new Answer("Hij had kanker")
+                    },
+                2),
+                new Question("Welke hit scoorde David Hasselhoff in 1989 in Nederland",
+                50,
+                new List<Answer>{
+                    new Answer("Creature of the night"),
+                    new Answer("Baby you can drive my car"), 
+                    new Answer("I've been looking for freedom")
+                    },
+                2),
+                new Question("Welke hit was niet van Whitney Houston?",
+                75,
+                new List<Answer>{
+                    new Answer("I will always love you"),
+                    new Answer("One moment in time"), 
+                    new Answer("My heart will go on"), 
+                    new Answer("So emotional")
+                    },
+                2)
+            };
+
         }
-        static string[]  GetSortedHighScore(string file){            
-
-            string[] raw = File.ReadAllLines(file);
-            int lineCount = raw.Length;
-
-            List<int> scoresUnsorted = new List<int>();
-            string[] namesUnsorted = new string[lineCount];
-
-            //split names from scores
-            for(int i=0;i<lineCount;i++){            
-                string[] sub = raw[i].Split(':');
-
-
-                namesUnsorted[i] = sub[0]; 
-
-                int s; 
-                Int32.TryParse(sub[1],out s);             
-                scoresUnsorted.Add(s);  
-
-
-
-            }            
-            //sort algorithm
-            int[] sortedScores = new int[lineCount];
-            string[] sortedNames = new string[lineCount];
-            int highest = 0;
-            int highestIndex = 0;
-           
-
-           //Algoritme klopt niet!!
-            for(int j = lineCount-1; j >= 0; j--){
-
-
-
-                Console.WriteLine("j:"+j);
-                for(int i =scoresUnsorted.Count-1; i >= 0; i--){
-                    Console.WriteLine("i"+i);
-                    Console.WriteLine(scoresUnsorted[i]+" >? "+highest);
-                    if(scoresUnsorted[i] > highest){
-                        
-                        highest = scoresUnsorted[i];
-                        highestIndex = i;   
-                        Console.WriteLine("highest:"+highest);                   
-                    }
-                }
-                sortedScores[j] = scoresUnsorted[highestIndex];
-                sortedNames[j] = namesUnsorted[highestIndex];
-                scoresUnsorted.RemoveAt(highestIndex);
-                highestIndex = 0;
-            }
-            Console.WriteLine(lineCount);
-            string[] sortedHighScore = new string[lineCount]; 
-            for(int k = 0; k < lineCount; k++){
-                sortedHighScore[k] = sortedNames[k]+" : "+sortedScores[k];
-                Console.WriteLine("sorted names"+sortedNames[k]);
-
-            }
-        return sortedHighScore;
-        }
+        
     }
 }

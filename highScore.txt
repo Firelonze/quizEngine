@@ -2,3 +2,21 @@ Kees : 10
 Klaas : 60
 Henk : 10
 Dave:50
+Erwin:150
+Fred:100
+Sjaak:150
+Loser:0
+Dikkie:100
+Dave:0
+Hans:150
+Jacob:100
+Iris:100
+Je moeder:50
+Gekke Gerrit:100
+Loser:0
+Pietje:0
+Erwin:175
+Dirkjan:50
+Hendrik:175
+The King:175
+Bernhard:150
