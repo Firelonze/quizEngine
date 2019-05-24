@@ -1,0 +1,11 @@
+C:\data\gitHub\quizEngine\bin\Debug\netcoreapp2.2\quizEngine.deps.json
+C:\data\gitHub\quizEngine\bin\Debug\netcoreapp2.2\quizEngine.runtimeconfig.json
+C:\data\gitHub\quizEngine\bin\Debug\netcoreapp2.2\quizEngine.runtimeconfig.dev.json
+C:\data\gitHub\quizEngine\bin\Debug\netcoreapp2.2\quizEngine.dll
+C:\data\gitHub\quizEngine\bin\Debug\netcoreapp2.2\quizEngine.pdb
+C:\data\gitHub\quizEngine\obj\Debug\netcoreapp2.2\quizEngine.csprojAssemblyReference.cache
+C:\data\gitHub\quizEngine\obj\Debug\netcoreapp2.2\quizEngine.csproj.CoreCompileInputs.cache
+C:\data\gitHub\quizEngine\obj\Debug\netcoreapp2.2\quizEngine.AssemblyInfoInputs.cache
+C:\data\gitHub\quizEngine\obj\Debug\netcoreapp2.2\quizEngine.AssemblyInfo.cs
+C:\data\gitHub\quizEngine\obj\Debug\netcoreapp2.2\quizEngine.dll
+C:\data\gitHub\quizEngine\obj\Debug\netcoreapp2.2\quizEngine.pdb

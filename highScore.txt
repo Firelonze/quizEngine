@@ -1,0 +1,4 @@
+Kees : 10
+Klaas : 60
+Henk : 10
+Dave:50
