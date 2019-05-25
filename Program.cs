@@ -13,8 +13,7 @@ namespace quizEngine
         {    
             //create questions and answers            
             List<Question> questions = CreateQuestions();
-
-           
+                       
             Console.ForegroundColor = ConsoleColor.White;
             
             //loop through questions
@@ -30,10 +29,17 @@ namespace quizEngine
                     Console.WriteLine("Type  "+ j + " for : "+a.GetString());   
                 }
                 
-                //Await player input
-                //input still needs validation
-                int input  = Convert.ToInt32(Console.ReadLine());
+                //Await player input and validate if it's an int
+                int input;
+                bool parsed = false;
+                do{
+                    Console.WriteLine("Please answer with a number");
+                    parsed = int.TryParse(Console.ReadLine(), out input);
+                }
+                while(!parsed);
+                 
                 int result = q.AnswerIt(input-1);//returns -1 if wrong
+
                 if(result > -1){//RIGHT
                     score += result;
                     Console.Clear();
@@ -54,7 +60,7 @@ namespace quizEngine
                     Console.BackgroundColor = ConsoleColor.Black;                       
                 }                
             }
-            //After questions are answered player enters highscore
+            //After questions are answered player enters name for highscore
             Console.Clear();
             Console.WriteLine("Game Over your score is : "+ score + " points");       
             Console.WriteLine("Please enter your name:");

@@ -20,3 +20,5 @@ Dirkjan:50
 Hendrik:175
 The King:175
 Bernhard:150
+Jan Willem:175
+
