@@ -2,11 +2,11 @@
 Simpele Quiz Engine in C# te gebruiken voor de introductieweek van de opleiding media- en gamedeveloper aan het Mediacollege Amsterdam.
 
 De engine bevat de volgende features:
-..*Vragen en bijhoren de antwoorden in een lijst.
-..*Highscore word opgeslagen in een textbestand.
-..*Geluiden bij goede en foute antwoorden.
-..*Beantwoorden van quizvragen.
-..*Sorteren van highscore.
+*Vragen en bijhoren de antwoorden in een lijst.
+*Highscore word opgeslagen in een textbestand.
+*Geluiden bij goede en foute antwoorden.
+*Beantwoorden van quizvragen.
+*Sorteren van highscore.
 
 # Instructies
 
