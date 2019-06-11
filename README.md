@@ -10,7 +10,7 @@ De engine bevat de volgende features:
 
 # Instructies
 
-Download en installeer eerst [Visual Studio Code](https://code.visualstudio.com/).
+Download en installeer eerst [Visual Studio Code](https://code.visualstudio.com/) of een andere code editor.
 
 Download en installeer de [.NET core SDK](https://dotnet.microsoft.com/download).
 
