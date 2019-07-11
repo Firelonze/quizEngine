@@ -20,6 +20,6 @@ Test of .NET compiler werkt door **_dotnet --version_** te typen.
 
 Download of [clone](https://help.github.com/en/articles/cloning-a-repository) het project naar je computer.
 
-Navigeer met de commandline naar de map waarin de code is opgeslagen. 
+[Navigeer met de commandline](https://www.computerhope.com/issues/chusedos.htm) naar de map waarin de code is opgeslagen. 
 
 Pas de code aan en run de code door **_dotnet run_** in de commandline te typen.
